@@ -1,0 +1,21 @@
+apiVersion: apps/v1beta1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: centos-wildfly
+  labels:
+    app: centos-wildfly
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: centos-wildfly
+  template:
+    metadata:
+      labels:
+        app: centos-wildfly
+    spec:
+      containers:
+      - name: centos-wildfly
+        image: adakb/centos-wildfly
+        ports:
+        - containerPort: 8080
